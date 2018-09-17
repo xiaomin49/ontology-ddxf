@@ -11,7 +11,7 @@ DDXF提供的主要功能包括：
 
 * 数据资产化DataToken
 * 数据交易智能合约eXchange Smart Contract
-* 数据交易SDK
+* 数据交易客户端DataRot
 * 一系列密码学组件（如：数据水印）
 
 ![](http://on-img.com/chart_image/5b9b529de4b0fe81b63605f9.png)
@@ -31,6 +31,9 @@ DDXF提供的主要功能包括：
 | 去中心化数据交易所 |     DDXF的使用者，作为一个服务机构，主要工作包括：1、运营可视化的数据交易页面或社区 2、制定行业中的数据交易和交换标准，便于买卖双方以及交易参与方高效交易。各行各业数据交换标准会有很大差异性，所以将有各种不同类型的去中心化数据交易所。    | 
 
 
+## 系统架构
+
+![](http://on-img.com/chart_image/5b9fd665e4b0534c9bdfc0bb.png)
 
 ## 数据Token
 
@@ -67,14 +70,8 @@ DToken的目的是将任何的数据、实体Token化，DToken可以在DDXF交�
  * **evaluate** (tokenid, ontid)：指定的ontid给tokenid打分
  * **getRating**(tokenid) （获取指定tokenid的打分)
  * **changeAuditor**(tokenid,ontid) （修改tokenid的打分人)
- 
-
-
-## 工作模式
-
-
-![](http://on-img.com/chart_image/5a92878de4b059c41ac98e46.png)
-
+ * **setSecret （设定数据的访问密钥)
+ * **getSecret （获取数据的访问密钥)
 
 
 ## 基于智能合约“一手交钱，一手交货”
@@ -114,10 +111,6 @@ DToken的目的是将任何的数据、实体Token化，DToken可以在DDXF交�
 
 
 
-## 数据交割设计
-
-[进入了解](offchain-data-exchange.md)
-
 
 ## 数据交易组件DataRot
 
@@ -134,7 +127,7 @@ DToken的目的是将任何的数据、实体Token化，DToken可以在DDXF交�
 由于组件需要调链上智能合约发交易，数据提供方需要把自己的OntId和account.json账户文件配置在组件配置文件和目录中。
 
 ### 数据链上DToken化
-ExDataClient组件提供标准Restful API替数据提供方完成本地数据在链上智能合约中的DToken化。数据提供方需提供dataName，dataPath，auditorOntId等信息。组件会生成唯一数据URL，获取配置的数据提供方OntId绑定到DToken中。
+DataRot组件提供标准Restful API替数据提供方完成本地数据在链上智能合约中的DToken化。数据提供方需提供dataName，dataPath，auditorOntId等信息。组件会生成唯一数据URL，获取配置的数据提供方OntId绑定到DToken中。
 ```
 {
 	"auditorOntId":"did:ont:T2nGst12KJ769n0N1GC7901n2",
@@ -165,6 +158,17 @@ ExDataClient组件提供标准Restful API替数据提供方完成本地数据在
 ```
 
 DataRot组件首先需检查该DToken的状态是否是"已审核"，然后再对请求签名进行验签，确认数据请求附带的OntId属于请求方。最后检查该OntId是否已经是DToken的属主。完成以上步骤才算权限验证通过。
+
+## 数据存储和交割
+
+[进入了解](offchain-data-exchange.md)
+
+## 工作模式
+
+
+![](http://on-img.com/chart_image/5a92878de4b059c41ac98e46.png)
+
+
 
 
 
