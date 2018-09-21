@@ -123,6 +123,7 @@ DToken的目的是将任何的数据、实体Token化，DToken可以在DDXF交�
 - DToken链上动作监听
 - 请求方权限验证
 - 数据加密安全传输
+- 数据本地存储
 
 由于组件需要调链上智能合约发交易，数据提供方需要把自己的OntId和account.json账户文件配置在组件配置文件和目录中。
 
@@ -159,9 +160,9 @@ DataRot组件提供标准Restful API替数据提供方完成本地数据在链�
 
 DataRot组件首先需检查该DToken的状态是否是"已审核"，然后再对请求签名进行验签，确认数据请求附带的OntId属于请求方。最后检查该OntId是否已经是DToken的属主。完成以上步骤才算权限验证通过。
 
-## 数据存储和交割
+## 端到端加密
 
-[进入了解](offchain-data-exchange.md)
+[进入了解](end-to-end-enc.md)
 
 ## 工作模式
 
