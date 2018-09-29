@@ -1,4 +1,4 @@
-<h1 align="center">去中心化数据交换协议及应用框架</h1>
+<h1 align="center">去中心化数据交换协议</h1>
 <p align="center" class="version">Version 0.8.0 </p>
 
 ## 摘要
