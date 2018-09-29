@@ -149,12 +149,12 @@ DToken的目的是将任何的数据、实体Token化，DToken可以在DDXF交�
 
 ```json
 {
-    "OntID": "",  
+    "OntID": "did:ont:AZk5wBNiV8dCPAFXoGvDSvetfufuXJXM8r",  
     "PkIndex": 1,
-    "IV": "",
-    "EncrypteAESKey": "", 
-    "Ciphertext": "",
-    "AuthTag": ""
+    "IV": "63E8B8136C101AEF06E25FF3",
+    "EncrypteAESKey": "...", 
+    "Ciphertext": "https://example.com/ciphertext.dat",
+    "AuthTag": "..."
 }
 ```
 
@@ -163,7 +163,7 @@ DToken的目的是将任何的数据、实体Token化，DToken可以在DDXF交�
  * PkIndex： 公钥加密算法所使用的接受者公钥索引（4个字节）
  * IV： 用于AES256-GCM模式的初始向量，默认为12字节
  * EncryptedAESKey：被公钥加密后的AES秘钥
- * Ciphertext：密文
+ * Ciphertext：用对称加密算法加密后的数据的URL
  * AuthTag: 认证标签，即MAC
 
 其中，AES-GCM模式下的认证数据（AAD）为 `OntID || PkIndex`。
@@ -198,6 +198,7 @@ DToken的目的是将任何的数据、实体Token化，DToken可以在DDXF交�
 
 * 输入：
    * 密文JSON对象
+   * ciphertext数据
    * 私钥sk
 * 输出:
    * 明文或“失败”
